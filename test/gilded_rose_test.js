@@ -4,11 +4,9 @@ let Item = require('../src/gilded_rose').Item;
 let Shop = require('../src/gilded_rose').Shop;
 let ShopBuilder = require('./ShopBuilder');
 
-//Add conjured item test
-
 describe('Gilded Rose Test Day 0', () => {
 
-    let GildedRose = ShopBuilder.aShop().addItem(new Item('Wine', 1, 10)).addItem(new Item("Sulfuras, Hand of Ragnaros", 0, 80)).addItem(new Item("Aged Brie", 2, 0)).addItem(new Item("Backstage passes to a TAFKAL80ETC concert", 6, 20)).build()
+    let GildedRose = ShopBuilder.aShop().addItem(new Item('Wine', 1, 10)).addItem(new Item("Sulfuras, Hand of Ragnaros", 0, 80)).addItem(new Item("Aged Brie", 2, 0)).addItem(new Item("Backstage passes to a TAFKAL80ETC concert", 6, 20)).addItem(new Item("Conjured Mana Cake", 3, 6)).build()
     GildedRose.updateQuality();
 
     it('should keep the quality and sell value of Sulfuras the same', () => {
@@ -30,10 +28,15 @@ describe('Gilded Rose Test Day 0', () => {
         assert.equal(GildedRose.items.find(item => item.name === 'Backstage passes to a TAFKAL80ETC concert').quality, 22);
         assert.equal(GildedRose.items.find(item => item.name === 'Backstage passes to a TAFKAL80ETC concert').sellIn, 5)
     });
+
+    it('should decrease quality by 2 and sell value by 1 of Conjured Mana Cake', () => {
+        assert.equal(GildedRose.items.find(item => item.name === 'Conjured Mana Cake').quality, 4);
+        assert.equal(GildedRose.items.find(item => item.name === 'Conjured Mana Cake').sellIn, 2);
+    });
 })
 
 describe('Gilded Rose Test Day 1', () => {
-    let GildedRose = ShopBuilder.aShop().addItem(new Item('Wine', 1, 10)).addItem(new Item("Sulfuras, Hand of Ragnaros", 0, 80)).addItem(new Item("Aged Brie", 2, 0)).addItem(new Item("Backstage passes to a TAFKAL80ETC concert", 6, 20)).build()
+    let GildedRose = ShopBuilder.aShop().addItem(new Item('Wine', 1, 10)).addItem(new Item("Backstage passes to a TAFKAL80ETC concert", 6, 20)).build()
     GildedRose.updateQuality()
     GildedRose.updateQuality();
 
@@ -51,7 +54,7 @@ describe('Gilded Rose Test Day 1', () => {
 
 describe('Gilded Rose Test Day 3', () => {
 
-    let GildedRose = ShopBuilder.aShop().addItem(new Item('Wine', 1, 10)).addItem(new Item("Sulfuras, Hand of Ragnaros", 0, 80)).addItem(new Item("Aged Brie", 2, 0)).addItem(new Item("Backstage passes to a TAFKAL80ETC concert", 6, 20)).build()
+    let GildedRose = ShopBuilder.aShop().addItem(new Item("Aged Brie", 2, 0)).build()
     GildedRose.updateQuality();
     GildedRose.updateQuality();
     GildedRose.updateQuality();
@@ -66,7 +69,7 @@ describe('Gilded Rose Test Day 3', () => {
 
 describe('Gilded Rose Test Day 6', () => {
 
-    let GildedRose = ShopBuilder.aShop().addItem(new Item('Wine', 1, 10)).addItem(new Item("Sulfuras, Hand of Ragnaros", 0, 80)).addItem(new Item("Aged Brie", 2, 0)).addItem(new Item("Backstage passes to a TAFKAL80ETC concert", 6, 20)).build()
+    let GildedRose = ShopBuilder.aShop().addItem(new Item("Backstage passes to a TAFKAL80ETC concert", 6, 20)).build()
     GildedRose.updateQuality();
     GildedRose.updateQuality();
     GildedRose.updateQuality();
