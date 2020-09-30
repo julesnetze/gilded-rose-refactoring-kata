@@ -1,4 +1,4 @@
-let Shop = require('../src/gilded_rose').Shop;
+let Shop = require('../src/gilded_rose_shop');
 
 class ShopBuilder {
     constructor() {

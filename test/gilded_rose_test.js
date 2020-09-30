@@ -1,7 +1,6 @@
 const { assert } = require('chai');
 
 let Item = require('../src/gilded_rose').Item;
-let Shop = require('../src/gilded_rose').Shop;
 let ShopBuilder = require('./ShopBuilder');
 
 describe('Gilded Rose Test Day 0', () => {
